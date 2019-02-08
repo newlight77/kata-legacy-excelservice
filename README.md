@@ -59,5 +59,16 @@ __campagne__
 
 ## Architecture 
 
-This application is a backend to expose REST API. Data are persisted in a H2 memory database.
+This application is a backend to expose REST API. 
 
+Data are persisted in a [H2 memory database](http://localhost:8080/h2-console).
+
+## REST API
+
+The endpoints are :
+
+- `/api/sondage/creer`
+- `/api/sondage/get`
+- `/api/sondage/campagne/creer`
+- `/api/sondage/campagne/get`
+- `/api/sondage/campagne/export`
