@@ -1,4 +1,4 @@
-package com.newlight77.kata.excel.katalegacyexcelservice;
+package com.newlight77.kata.excel;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
