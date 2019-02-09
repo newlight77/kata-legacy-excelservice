@@ -1,13 +1,10 @@
-package com.newlight77.kata.excel;
+package com.newlight77.kata.survey;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 public class Application {

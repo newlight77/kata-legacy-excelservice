@@ -1,10 +1,10 @@
-package com.newlight77.kata.excel.config;
+package com.newlight77.kata.survey.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MailServiceConfiguration {
+public class MailServiceConfig {
 
   @Value("${service.mail.from}")
   private String from;

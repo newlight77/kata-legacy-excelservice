@@ -11,48 +11,47 @@ The initial codebase shows the technical dept when we neglect to do what should 
 
 ## Data Model
 
-__sondage__
+__survey__
 ```json
 {
-    "id" : "idSondage",
-    "sommaire" : "sommaire",
-    "client" : "nom de client",
-    "adresseClient" : "adresseClient",
+    "id" : "surveyId",
+    "sommary" : "sommary",
+    "client" : "client's name",
+    "clientAddress" : "clientAddress",
     "questions" : [{
-        "id" : "idQuestion1",
+        "id" : "questionId1",
         "question" : "question1"
     }, 
     {
-       "id" : "idQuestion2",
+       "id" : "questionId2",
        "question" : "question2"
    }] 
 }
 ```
 
-__campagne__
+__campaign__
 ```json
 {
-    "id" : "idCampagne",
-    "sondageId" : "idSondage",
-    "client" : "nom de client",
-    "adresseEffectues" : [ {
-        "id" : "idAdresseEffectue1",
+    "id" : "campaignId",
+    "surveyId" : "surveyId",
+    "addressStatuses" : [ {
+        "id" : "addressStatusesId1",
         "adresse" : {
           "numVoie" : "10",
           "nomVoie" : "rue de Rivoli",
           "codePostal" : "75001",
           "commune" : "Paris"
         },
-        "status" : "EFFECTUE"
+        "status" : "DONE"
     }, {
-        "id" : "idAdresseEffectue2",
+        "id" : "addressStatusesId2",
         "adresse" : {
           "numVoie" : "40",
           "nomVoie" : "rue du Louvre",
           "codePostal" : "75001",
           "commune" : "Paris"
         },
-        "status" : "A_FAIRE"
+        "status" : "TODO"
     }] 
 }
 ```
@@ -67,15 +66,15 @@ Data are persisted in a [H2 memory database](http://localhost:8080/h2-console).
 
 The endpoints are :
 
-- `/api/sondage/creer`
-- `/api/sondage/get`
-- `/api/sondage/campagne/creer`
-- `/api/sondage/campagne/get`
-- `/api/sondage/campagne/export`
+- `/api/survey/creer`
+- `/api/survey/get`
+- `/api/survey/campaign/creer`
+- `/api/survey/campaign/get`
+- `/api/survey/campaign/export`
 
 ## Stub
 
-This application consumes curd api for sondage and campagne. Here we use [json-server](https://github.com/typicode/json-server#getting-started) to serve it.
+This application consumes curd api for survey and campaign. Here we use [json-server](https://github.com/typicode/json-server#getting-started) to serve it.
 
 ```bash
 npm install -g json-server

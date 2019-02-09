@@ -1,4 +1,4 @@
-package com.newlight77.kata.excel;
+package com.newlight77.kata.survey;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

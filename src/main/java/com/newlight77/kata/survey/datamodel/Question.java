@@ -1,4 +1,4 @@
-package com.newlight77.kata.excel.datamodel;
+package com.newlight77.kata.survey.datamodel;
 
 public class Question {
 

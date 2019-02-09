@@ -1,13 +1,13 @@
-package com.newlight77.kata.excel.datamodel;
+package com.newlight77.kata.survey.datamodel;
 
 import java.util.List;
 
-public class Sondage {
+public class Survey {
 
     private String id;
-    private String sommaire;
+    private String sommary;
     private String client;
-    private Adresse adresseClient;
+    private Address clientAddress;
     private List<Question> questions;
 
     public String getId() {
@@ -18,13 +18,6 @@ public class Sondage {
         this.id = id;
     }
 
-    public String getSommaire() {
-        return sommaire;
-    }
-
-    public void setSommaire(String sommaire) {
-        this.sommaire = sommaire;
-    }
 
     public String getClient() {
         return client;
@@ -34,12 +27,12 @@ public class Sondage {
         this.client = client;
     }
 
-    public Adresse getAdresseClient() {
-        return adresseClient;
+    public Address getClientAddress() {
+        return clientAddress;
     }
 
-    public void setAdresseClient(Adresse adresseClient) {
-        this.adresseClient = adresseClient;
+    public void setClientAddress(Address clientAddress) {
+        this.clientAddress = clientAddress;
     }
 
     public void setQuestions(List<Question> questions) {
