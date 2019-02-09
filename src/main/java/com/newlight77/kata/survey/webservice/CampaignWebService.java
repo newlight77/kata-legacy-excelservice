@@ -12,40 +12,37 @@ public class CampaignWebService {
 
     private WebClient webClient;
 
-    public CampaignWebService(@Value("external.api") String externalUrl) {
-        this.webClient = WebClient.builder()
+    public CampaignWebService(@Value("${external.url}") String externalUrl) {
+        webClient = WebClient.builder()
                 .baseUrl(externalUrl)
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, "application/json")
                 .defaultHeader(HttpHeaders.USER_AGENT, "Spring 5 WebClient")
                 .build();;
     }
 
-    public Survey creerSurvey(Survey survey) {
-        return webClient.post()
-                .uri("/survey")
+    public void createSurvey(Survey survey) {
+        webClient.post()
+                .uri("/surveys")
                 .syncBody(survey)
-                .retrieve()
-                .bodyToMono(Survey.class).block();
+                .retrieve();
     }
 
     public Survey getSurvey(String id) {
         return webClient.get()
-                .uri("/survey/" + id)
+                .uri("/surveys/" + id)
                 .retrieve()
                 .bodyToMono(Survey.class).block();
     }
 
-    public Campaign createCampaign(Campaign campaign) {
-        return webClient.post()
-                .uri("/campaign")
-                .syncBody(campaign)
-                .retrieve()
-                .bodyToMono(Campaign.class).block();
+    public void createCampaign(Campaign campaign) {
+        webClient.post()
+                .uri("/campaigns")
+                .syncBody(campaign);
     }
 
     public Campaign getCampaign(String id) {
         return webClient.get()
-                .uri("/campaign/" + id)
+                .uri("/campaigns/" + id)
                 .retrieve()
                 .bodyToMono(Campaign.class).block();
     }

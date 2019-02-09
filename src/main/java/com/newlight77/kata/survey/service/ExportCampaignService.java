@@ -28,17 +28,16 @@ public class ExportCampaignService {
     this.mailService = mailService;
   }
 
-  public Survey creerSurvey(Survey survey) {
-    survey.setId(UUID.randomUUID().toString());
-    return survey;
+  public void creerSurvey(Survey survey) {
+    campaignWebService.createSurvey(survey);
   }
 
   public Survey getSurvey(String id) {
     return campaignWebService.getSurvey(id);
   }
 
-  public Campaign createCampaign(Campaign campaign) {
-    return campaignWebService.createCampaign(campaign);
+  public void createCampaign(Campaign campaign) {
+    campaignWebService.createCampaign(campaign);
   }
 
   public Campaign getCampaign(String id) {
@@ -143,27 +142,27 @@ public class ExportCampaignService {
     int startIndex = 9;
     int currentIndex = 0;
 
-    for (AddressStatus adresseEffectue : campaign.getAddressStatuses()) {
+    for (AddressStatus addressStatus : campaign.getAddressStatuses()) {
 
       Row surveyRow = sheet.createRow(startIndex + currentIndex);
       Cell surveyRowCell = surveyRow.createCell(0);
-      surveyRowCell.setCellValue(adresseEffectue.getAddress().getStreetNumber());
+      surveyRowCell.setCellValue(addressStatus.getAddress().getStreetNumber());
       surveyRowCell.setCellStyle(style);
 
       surveyRowCell = surveyRow.createCell(1);
-      surveyRowCell.setCellValue(adresseEffectue.getAddress().getStreetName());
+      surveyRowCell.setCellValue(addressStatus.getAddress().getStreetName());
       surveyRowCell.setCellStyle(style);
 
       surveyRowCell = surveyRow.createCell(2);
-      surveyRowCell.setCellValue(adresseEffectue.getAddress().getPostalCode());
+      surveyRowCell.setCellValue(addressStatus.getAddress().getPostalCode());
       surveyRowCell.setCellStyle(style);
 
       surveyRowCell = surveyRow.createCell(3);
-      surveyRowCell.setCellValue(adresseEffectue.getAddress().getCity());
+      surveyRowCell.setCellValue(addressStatus.getAddress().getCity());
       surveyRowCell.setCellStyle(style);
 
       surveyRowCell = surveyRow.createCell(2);
-      surveyRowCell.setCellValue(adresseEffectue.getStatus().toString());
+      surveyRowCell.setCellValue(addressStatus.getStatus().toString());
       surveyRowCell.setCellStyle(style);
 
       currentIndex++;
