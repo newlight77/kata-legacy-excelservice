@@ -1,0 +1,22 @@
+version:  '3.1'
+
+services:
+
+  stub:
+    container_name:  stub
+    image:  clue/json-server
+    ports:
+      - 3000:80
+    volumes:
+      - ./stub.json:/data/db.json
+
+  mailhog:
+    container_name:  mailhog
+    image:  mailhog/mailhog
+    ports:
+      - 25:1025
+      - 8025:8025
+
+
+
+

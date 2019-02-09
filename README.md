@@ -76,9 +76,30 @@ The endpoints are :
 
 This application consumes curd api for survey and campaign. Here we use [json-server](https://github.com/typicode/json-server#getting-started) to serve it.
 
+Run the json-server :
+
 ```bash
 npm install -g json-server
 
+# running on port 3000
 json-server --watch stub.json
 
+```
+
+## Email
+
+We use mailhog to catch every email sent. 
+
+Run the mailhog server and browse the [ui](http://localhost:8025/#):
+
+```bash
+docker run -d -p 3000:80 -v ./stub.json:/data/db.json clue/json-server
+```
+
+## Docker-compose
+
+As an alternative, run with docker-compose:
+
+```bash
+docker-compse up -d
 ```
