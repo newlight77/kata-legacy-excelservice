@@ -1,0 +1,41 @@
+{
+  "sondage" : {
+    "id" : "idSondage",
+    "sommaire" : "sommaire",
+    "client" : "nom de client",
+    "adresseClient" : "adresseClient",
+    "questions" : [{
+      "id" : "idQuestion1",
+      "question" : "question1"
+    },
+      {
+        "id" : "idQuestion2",
+        "question" : "question2"
+      }]
+  },
+
+  "campagne" : {
+    "id" : "idCampagne",
+    "sondageId" : "idSondage",
+    "client" : "nom de client",
+    "adresseEffectues" : [ {
+      "id" : "idAdresseEffectue1",
+      "adresse" : {
+        "numVoie" : "10",
+        "nomVoie" : "rue de Rivoli",
+        "codePostal" : "75001",
+        "commune" : "Paris"
+      },
+      "status" : "EFFECTUE"
+    }, {
+      "id" : "idAdresseEffectue2",
+      "adresse" : {
+        "numVoie" : "40",
+        "nomVoie" : "rue du Louvre",
+        "codePostal" : "75001",
+        "commune" : "Paris"
+      },
+      "status" : "A_FAIRE"
+    }]
+  }
+}

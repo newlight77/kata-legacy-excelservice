@@ -72,3 +72,14 @@ The endpoints are :
 - `/api/sondage/campagne/creer`
 - `/api/sondage/campagne/get`
 - `/api/sondage/campagne/export`
+
+## Stub
+
+This application consumes curd api for sondage and campagne. Here we use [json-server](https://github.com/typicode/json-server#getting-started) to serve it.
+
+```bash
+npm install -g json-server
+
+json-server --watch stub.json
+
+```
