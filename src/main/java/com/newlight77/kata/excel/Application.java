@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 public class Application {
@@ -19,5 +20,6 @@ public class Application {
 	public JavaMailSender javaMailSender() {
 		return new JavaMailSenderImpl();
 	}
+
 }
 
