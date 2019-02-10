@@ -91,28 +91,19 @@ public class ExportCampaignService {
 
     Row clientRow = sheet.createRow(3);
     Cell nomClientRowLabel = clientRow.createCell(0);
-    nomClientRowLabel.setCellValue("Client");
+    nomClientRowLabel.setCellValue(survey.getClient());
     nomClientRowLabel.setCellStyle(style);
-    Cell nomClientRowValue = clientRow.createCell(1);
-    nomClientRowValue.setCellValue(survey.getClient());
-    nomClientRowValue.setCellStyle(style);
-
-    Row clientAddressLabelRow = sheet.createRow(4);
-    Cell adresseClientRowLabel = clientAddressLabelRow.createCell(0);
-    adresseClientRowLabel.setCellValue("Client address");
-    adresseClientRowLabel.setCellStyle(style);
 
     String clientAddress = survey.getClientAddress().getStreetNumber() + " "
             + survey.getClientAddress().getStreetName() + survey.getClientAddress().getPostalCode() + " "
             + survey.getClientAddress().getCity();
 
-    Row clientAddressRow = sheet.createRow(5);
-    Cell clientAddressCell = clientAddressRow.createCell(1);
+    Row clientAddressLabelRow = sheet.createRow(4);
+    Cell clientAddressCell = clientAddressLabelRow.createCell(0);
     clientAddressCell.setCellValue(clientAddress);
     clientAddressCell.setCellStyle(style);
 
-
-    row = sheet.createRow(8);
+    row = sheet.createRow(6);
     cell = row.createCell(0);
     cell.setCellValue("Number of surveys");
     cell = row.createCell(1);
@@ -161,7 +152,7 @@ public class ExportCampaignService {
       surveyRowCell.setCellValue(addressStatus.getAddress().getCity());
       surveyRowCell.setCellStyle(style);
 
-      surveyRowCell = surveyRow.createCell(2);
+      surveyRowCell = surveyRow.createCell(4);
       surveyRowCell.setCellValue(addressStatus.getStatus().toString());
       surveyRowCell.setCellStyle(style);
 
