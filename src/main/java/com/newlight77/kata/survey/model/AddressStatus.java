@@ -1,4 +1,4 @@
-package com.newlight77.kata.survey.datamodel;
+package com.newlight77.kata.survey.model;
 
 public class AddressStatus {
     private String id;

@@ -1,4 +1,4 @@
-package com.newlight77.kata.survey.datamodel;
+package com.newlight77.kata.survey.model;
 
 import java.util.List;
 

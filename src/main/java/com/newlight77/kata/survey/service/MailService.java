@@ -1,4 +1,4 @@
-package com.newlight77.kata.survey.mail;
+package com.newlight77.kata.survey.service;
 
 import com.newlight77.kata.survey.config.MailServiceConfig;
 import org.slf4j.Logger;

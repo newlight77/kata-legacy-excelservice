@@ -1,7 +1,7 @@
 package com.newlight77.kata.survey.controler;
 
-import com.newlight77.kata.survey.datamodel.Campaign;
-import com.newlight77.kata.survey.datamodel.Survey;
+import com.newlight77.kata.survey.model.Campaign;
+import com.newlight77.kata.survey.model.Survey;
 import com.newlight77.kata.survey.service.ExportCampaignService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

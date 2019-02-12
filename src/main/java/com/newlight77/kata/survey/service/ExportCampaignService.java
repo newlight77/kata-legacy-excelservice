@@ -1,10 +1,9 @@
 package com.newlight77.kata.survey.service;
 
-import com.newlight77.kata.survey.datamodel.AddressStatus;
-import com.newlight77.kata.survey.datamodel.Campaign;
-import com.newlight77.kata.survey.datamodel.Survey;
-import com.newlight77.kata.survey.mail.MailService;
-import com.newlight77.kata.survey.webservice.CampaignWebService;
+import com.newlight77.kata.survey.model.AddressStatus;
+import com.newlight77.kata.survey.model.Campaign;
+import com.newlight77.kata.survey.model.Survey;
+import com.newlight77.kata.survey.client.CampaignClient;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,16 +13,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
 @Component
 public class ExportCampaignService {
 
-  private CampaignWebService campaignWebService;
+  private CampaignClient campaignWebService;
   private MailService mailService;
   private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
   
-  public ExportCampaignService(final CampaignWebService campaignWebService, MailService mailService) {
+  public ExportCampaignService(final CampaignClient campaignWebService, MailService mailService) {
     this.campaignWebService = campaignWebService;
     this.mailService = mailService;
   }
