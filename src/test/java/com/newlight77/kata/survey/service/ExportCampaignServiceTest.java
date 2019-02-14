@@ -42,55 +42,8 @@ public class ExportCampaignServiceTest {
     public void test() {
 
         // Arrange
-        String surveyJson = "{\n" +
-                "    \"id\" : \"surveyId\",\n" +
-                "    \"sommary\" : \"sommary\",\n" +
-                "    \"client\" : \"client's name\",\n" +
-                "    \"clientAddress\" : {\n" +
-                "        \"id\" : \"addressId1\",\n" +
-                "        \"streetNumber\" : \"10\",\n" +
-                "        \"streetName\" : \"rue de Rivoli\",\n" +
-                "        \"postalCode\" : \"75001\",\n" +
-                "        \"city\" : \"Paris\"\n" +
-                "    },\n" +
-                "    \"questions\" : [{\n" +
-                "        \"id\" : \"questionId1\",\n" +
-                "        \"question\" : \"question1\"\n" +
-                "    }, \n" +
-                "    {\n" +
-                "       \"id\" : \"questionId2\",\n" +
-                "       \"question\" : \"question2\"\n" +
-                "   }] \n" +
-                "}";
-
-        Survey survey = JsonUtil.instance().fromJson(surveyJson, Survey.class);
-
-        String campaignJson = "{\n" +
-                "    \"id\" : \"campaignId\",\n" +
-                "    \"surveyId\" : \"surveyId\",\n" +
-                "    \"addressStatuses\" : [ {\n" +
-                "        \"id\" : \"addressStatusesId1\",\n" +
-                "        \"address\" : {\n" +
-                "          \"id\" : \"addressId1\",\n" +
-                "          \"streetNumber\" : \"10\",\n" +
-                "          \"streetName\" : \"rue de Rivoli\",\n" +
-                "          \"postalCode\" : \"75001\",\n" +
-                "          \"city\" : \"Paris\"\n" +
-                "        },\n" +
-                "        \"status\" : \"DONE\"\n" +
-                "    }, {\n" +
-                "        \"id\" : \"addressStatusesId2\",\n" +
-                "        \"address\" : {\n" +
-                "          \"id\" : \"addressId2\",\n" +
-                "          \"streetNumber\" : \"40\",\n" +
-                "          \"streetName\" : \"rue de Louvre\",\n" +
-                "          \"postalCode\" : \"75001\",\n" +
-                "          \"city\" : \"Paris\"\n" +
-                "        },\n" +
-                "        \"status\" : \"TODO\"\n" +
-                "    }] \n" +
-                "}";
-        Campaign campaign = JsonUtil.instance().fromJson(campaignJson, Campaign.class);
+        Survey survey = JsonUtil.instance().fromJsonFile("/survey.json", Survey.class);
+        Campaign campaign = JsonUtil.instance().fromJsonFile("/campaign.json", Campaign.class);
 
         Mockito.doReturn(campaign).when(campaignClientMock).getCampaign(Mockito.anyString());
         Mockito.doNothing().when(mailServiceMock).send(Mockito.any(File.class));
@@ -108,6 +61,11 @@ public class ExportCampaignServiceTest {
         Sheet sheet = workbook.getSheet("Survey");
         Assertions.assertThat(sheet).isNotNull();
 
+        assertSurveySheetContent(survey, campaign, sheet);
+
+    }
+
+    private void assertSurveySheetContent(Survey survey, Campaign campaign, Sheet sheet) {
         Row headerRow = sheet.getRow(0);
         Assertions.assertThat(headerRow).isNotNull();
         Assertions.assertThat(headerRow.getCell(0)).isNotNull();
@@ -136,6 +94,5 @@ public class ExportCampaignServiceTest {
 
         Row surveysHeaderRow = sheet.getRow(8);
         Assertions.assertThat(surveysHeaderRow).isNotNull();
-
     }
 }

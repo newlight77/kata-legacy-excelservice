@@ -1,0 +1,25 @@
+{
+  "id" : "campaignId",
+  "surveyId" : "surveyId",
+  "addressStatuses" : [ {
+    "id" : "addressStatusesId1",
+    "address" : {
+      "id" : "addressId1",
+      "streetNumber" : "10",
+      "streetName" : "rue de Rivoli",
+      "postalCode" : "75001",
+      "city" : "Paris"
+    },
+    "status" : "DONE"
+  }, {
+    "id" : "addressStatusesId2",
+    "address" : {
+      "id" : "addressId2",
+      "streetNumber" : "40",
+      "streetName" : "rue de Louvre",
+      "postalCode" : "75001",
+      "city" : "Paris"
+    },
+    "status" : "TODO"
+  }]
+}
