@@ -17,7 +17,13 @@ __survey__
     "id" : "surveyId",
     "sommary" : "sommary",
     "client" : "client's name",
-    "clientAddress" : "clientAddress",
+    "clientAddress" : {
+        "id" : "addressId",
+        "streetNumber" : "10",
+        "streetName" : "rue de Rivoli",
+        "postalCode" : "75001",
+        "city" : "Paris"
+    },
     "questions" : [{
         "id" : "questionId1",
         "question" : "question1"
@@ -36,20 +42,22 @@ __campaign__
     "surveyId" : "surveyId",
     "addressStatuses" : [ {
         "id" : "addressStatusesId1",
-        "adresse" : {
-          "numVoie" : "10",
-          "nomVoie" : "rue de Rivoli",
-          "codePostal" : "75001",
-          "commune" : "Paris"
+        "address" : {
+          "id" : "addressId1",
+          "streetNumber" : "10",
+          "streetName" : "rue de Rivoli",
+          "postalCode" : "75001",
+          "city" : "Paris"
         },
         "status" : "DONE"
     }, {
         "id" : "addressStatusesId2",
-        "adresse" : {
-          "numVoie" : "40",
-          "nomVoie" : "rue du Louvre",
-          "codePostal" : "75001",
-          "commune" : "Paris"
+        "address" : {
+          "id" : "addressId2",
+          "streetNumber" : "40",
+          "streetName" : "rue de Louvre",
+          "postalCode" : "75001",
+          "city" : "Paris"
         },
         "status" : "TODO"
     }] 

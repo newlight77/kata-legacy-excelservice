@@ -18,6 +18,13 @@ public class Survey {
         this.id = id;
     }
 
+    public String getSommary() {
+        return sommary;
+    }
+
+    public void setSommary(String sommary) {
+        this.sommary = sommary;
+    }
 
     public String getClient() {
         return client;

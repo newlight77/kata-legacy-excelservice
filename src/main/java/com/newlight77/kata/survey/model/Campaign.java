@@ -16,19 +16,19 @@ public class Campaign {
         this.id = id;
     }
 
-    public List<AddressStatus> getAddressStatuses() {
-        return addressStatuses;
-    }
-
-    public void setAddressStatuses(List<AddressStatus> addressStatuses) {
-        this.addressStatuses = addressStatuses;
-    }
-
     public String getSurveyId() {
         return surveyId;
     }
 
     public void setSurveyId(String surveyId) {
         this.surveyId = surveyId;
+    }
+
+    public List<AddressStatus> getAddressStatuses() {
+        return addressStatuses;
+    }
+
+    public void setAddressStatuses(List<AddressStatus> addressStatuses) {
+        this.addressStatuses = addressStatuses;
     }
 }

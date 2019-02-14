@@ -42,8 +42,6 @@ public class SurveyController {
 
         Campaign campaign = exportCampaignService.getCampaign(campaignId);
         Survey survey = exportCampaignService.getSurvey(campaign.getSurveyId());
-
-        // envoie resultats
         exportCampaignService.sendResults(campaign, survey);
         
     }
