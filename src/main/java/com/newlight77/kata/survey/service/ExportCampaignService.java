@@ -158,6 +158,11 @@ public class ExportCampaignService {
 
     }
 
+    writeFileAndSend(survey, workbook);
+
+  }
+
+  protected void writeFileAndSend(Survey survey, Workbook workbook) {
     try {
       File resultFile = new File(System.getProperty("java.io.tmpdir"), "survey-" + survey.getId() + "-" + dateTimeFormatter.format(LocalDate.now()) + ".xlsx");
       FileOutputStream outputStream = new FileOutputStream(resultFile);
@@ -174,7 +179,6 @@ public class ExportCampaignService {
         // CANT HAPPEN
       }
     }
-
   }
 
 }
