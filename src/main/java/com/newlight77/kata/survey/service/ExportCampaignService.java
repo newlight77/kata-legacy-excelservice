@@ -24,17 +24,17 @@ public class ExportCampaignService {
 
   public void sendResults(Campaign campaign, Survey survey) {
 
-    CampaignExcelBuilder builder = new CampaignExcelBuilder(campaign, survey);
-
-    builder.buildSheet("Survey");
-    builder.buildHeaderStyle();
-    builder.buildHeader();
-    builder.buildTitleStyle();
-    builder.buildCellStyle();
-    builder.buildClient();
-    builder.buildSurveys();
-
-    Workbook workbook = builder.build();
+    Workbook workbook = CampaignExcelBuilder.builder(campaign, survey)
+            .buildSheet("Survey")
+            .buildHeaderStyle()
+            .buildHeader()
+            .buildTitleStyle()
+            .buildCellStyle()
+            .buildClient()
+            .buildSurveyQuantity()
+            .buildSurveyHeader()
+            .buildSurveyItems()
+            .build();
 
     writeFileAndSend(survey, workbook);
 

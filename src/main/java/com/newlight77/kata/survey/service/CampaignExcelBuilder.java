@@ -17,38 +17,31 @@ public class CampaignExcelBuilder {
     private CellStyle titleStyle;
     private CellStyle cellStyle;
 
-    public CampaignExcelBuilder(Campaign campaign, Survey survey) {
+    private CampaignExcelBuilder(Campaign campaign, Survey survey) {
         this.campaign = campaign;
         this.survey = survey;
         workbook = new XSSFWorkbook();
     }
 
-    public void buildSurveys() {
-
-        // step 6 : survey number
-        writeSurveyNumber();
-
-        // step 7 : survey header
-        writeSurveyHeader();
-
-        // step 8 : survey one by one
-        writeSurveys();
+    public static CampaignExcelBuilder builder(Campaign campaign, Survey survey) {
+        return new CampaignExcelBuilder(campaign, survey);
     }
 
-    public void writeSurveys() {
+    public CampaignExcelBuilder buildSurveyItems() {
         int startIndex = 9;
         int currentIndex = 0;
 
         for (AddressStatus addressStatus : campaign.getAddressStatuses()) {
 
-            writeSurvey(startIndex, currentIndex, addressStatus);
+            buildSurveyItem(startIndex, currentIndex, addressStatus);
 
             currentIndex++;
 
         }
+        return this;
     }
 
-    public void writeSurvey(int startIndex, int currentIndex, AddressStatus addressStatus) {
+    public void buildSurveyItem(int startIndex, int currentIndex, AddressStatus addressStatus) {
         Row surveyRow = surveySheet.createRow(startIndex + currentIndex);
         Cell surveyRowCell = surveyRow.createCell(0);
         surveyRowCell.setCellValue(addressStatus.getAddress().getStreetNumber());
@@ -71,7 +64,7 @@ public class CampaignExcelBuilder {
         surveyRowCell.setCellStyle(cellStyle);
     }
 
-    public void writeSurveyHeader() {
+    public CampaignExcelBuilder buildSurveyHeader() {
         Row surveysHeaderRow = surveySheet.createRow(8);
         Cell surveyLabelCell = surveysHeaderRow.createCell(0);
         surveyLabelCell.setCellValue("N° street");
@@ -92,9 +85,11 @@ public class CampaignExcelBuilder {
         surveyLabelCell = surveysHeaderRow.createCell(4);
         surveyLabelCell.setCellValue("Status");
         surveyLabelCell.setCellStyle(cellStyle);
+
+        return this;
     }
 
-    public void writeSurveyNumber() {
+    public CampaignExcelBuilder buildSurveyQuantity() {
         Row row;
         Cell cell;
         row = surveySheet.createRow(6);
@@ -102,9 +97,11 @@ public class CampaignExcelBuilder {
         cell.setCellValue("Number of surveys");
         cell = row.createCell(1);
         cell.setCellValue(campaign.getAddressStatuses().size());
+
+        return this;
     }
 
-    public void buildClient() {
+    public CampaignExcelBuilder buildClient() {
         Row row = surveySheet.createRow(2);
         Cell cell = row.createCell(0);
         cell.setCellValue("Client");
@@ -117,9 +114,10 @@ public class CampaignExcelBuilder {
 
         // step 9 : client address
         createClientAddress();
+        return this;
     }
 
-    public void createClientAddress() {
+    public CampaignExcelBuilder createClientAddress() {
         String clientAddress = survey.getClientAddress().getStreetNumber() + " "
                 + survey.getClientAddress().getStreetName() + survey.getClientAddress().getPostalCode() + " "
                 + survey.getClientAddress().getCity();
@@ -128,16 +126,18 @@ public class CampaignExcelBuilder {
         Cell clientAddressCell = clientAddressLabelRow.createCell(0);
         clientAddressCell.setCellValue(clientAddress);
         clientAddressCell.setCellStyle(cellStyle);
+        return this;
     }
 
-    public void buildHeader() {
+    public CampaignExcelBuilder buildHeader() {
         Row header = surveySheet.createRow(0);
         Cell headerCell = header.createCell(0);
         headerCell.setCellValue("Survey");
         headerCell.setCellStyle(headerStyle);
+        return this;
     }
 
-    public void buildHeaderStyle() {
+    public CampaignExcelBuilder buildHeaderStyle() {
         headerStyle = workbook.createCellStyle();
         headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
         headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
@@ -148,9 +148,10 @@ public class CampaignExcelBuilder {
         font.setBold(true);
         headerStyle.setFont(font);
         headerStyle.setWrapText(false);
+        return this;
     }
 
-    public void buildTitleStyle() {
+    public CampaignExcelBuilder buildTitleStyle() {
         titleStyle = workbook.createCellStyle();
         titleStyle.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
         titleStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
@@ -159,19 +160,22 @@ public class CampaignExcelBuilder {
         titleFont.setFontHeightInPoints((short) 12);
         titleFont.setUnderline(FontUnderline.SINGLE);
         titleStyle.setFont(titleFont);
+        return this;
     }
 
-    public void buildSheet(String sheetName) {
+    public CampaignExcelBuilder buildSheet(String sheetName) {
         surveySheet = workbook.createSheet(sheetName);
         surveySheet.setColumnWidth(0, 10500);
         for (int i = 1; i <= 18; i++) {
             surveySheet.setColumnWidth(i, 6000);
         }
+        return this;
     }
 
-    public void buildCellStyle() {
+    public CampaignExcelBuilder buildCellStyle() {
         cellStyle = workbook.createCellStyle();
         cellStyle.setWrapText(true);
+        return this;
     }
 
     public Workbook build() {
