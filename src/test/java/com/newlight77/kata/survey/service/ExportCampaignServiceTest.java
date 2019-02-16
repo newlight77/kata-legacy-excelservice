@@ -1,6 +1,7 @@
 package com.newlight77.kata.survey.service;
 
 import com.newlight77.kata.survey.client.CampaignClient;
+import com.newlight77.kata.survey.client.SurveyClient;
 import com.newlight77.kata.survey.model.Campaign;
 import com.newlight77.kata.survey.model.Survey;
 import com.newlight77.kata.survey.util.JsonUtil;
@@ -22,6 +23,9 @@ public class ExportCampaignServiceTest {
     private CampaignClient campaignClientMock;
 
     @Mock
+    private SurveyClient surveyClientMock;
+
+    @Mock
     private MailService mailServiceMock;
 
     @Captor
@@ -34,7 +38,7 @@ public class ExportCampaignServiceTest {
     public void init() {
         MockitoAnnotations.initMocks(this);
 
-        service = new ExportCampaignService(campaignClientMock, mailServiceMock);
+        service = new ExportCampaignService(mailServiceMock);
         service = Mockito.spy(service);
     }
 
