@@ -19,12 +19,12 @@ public class SurveyController {
       this.exportCampaignService = exportCampaignService;
     }
 
-    @RequestMapping(value = "/api/survey/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/surveys", method = RequestMethod.POST)
     public void createSurvey(@RequestBody Survey survey) {
         surveyService.creerSurvey(survey);
     }
 
-    @RequestMapping(value = "/api/survey/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/surveys", method = RequestMethod.GET)
     public Survey getSurvey(@RequestParam String id) {
         return surveyService.getSurvey(id);
     }

@@ -74,15 +74,18 @@ Data are persisted in a [H2 memory database](http://localhost:8080/h2-console).
 
 The endpoints are :
 
-- `/api/survey/creer`
-- `/api/survey/get`
-- `/api/survey/campaign/creer`
-- `/api/survey/campaign/get`
-- `/api/survey/campaign/export`
+- `/api/surveys`
+- `/api/campaigns`
+- `/api/campaigns/export`
 
 ## Stub
 
 This application consumes curd api for survey and campaign. Here we use [json-server](https://github.com/typicode/json-server#getting-started) to serve it.
+
+The endpoints are :
+
+- `/api/surveys`
+- `/api/campaigns`
 
 Run the json-server :
 
@@ -101,7 +104,7 @@ We use mailhog to catch every email sent.
 Run the mailhog server and browse the [ui](http://localhost:8025/#):
 
 ```bash
-docker run -d -p 3000:80 -v ./stub.json:/data/db.json clue/json-server
+docker run -d -p 8025:8025 -p 1025:1025 --name=mailhog mailhog/mailhog
 ```
 
 ## Docker-compose

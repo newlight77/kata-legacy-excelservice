@@ -25,17 +25,17 @@ public class CampaignController {
       this.exportCampaignService = exportCampaignService;
     }
 
-    @RequestMapping(value = "/api/campaign/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/campaigns", method = RequestMethod.POST)
     public void createCampaign(@RequestBody Campaign campaign) {
         campaignService.createCampaign(campaign);
     }
 
-    @RequestMapping(value = "/api/campaign/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/campaigns", method = RequestMethod.GET)
     public Campaign getCampaign(@RequestParam String id) {
         return campaignService.getCampaign(id);
     }
 
-    @RequestMapping(value = "/api/campaign/export", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/campaigns/export", method = RequestMethod.POST)
     public void exportCampaign(@RequestParam String campaignId) {
         Campaign campaign = campaignService.getCampaign(campaignId);
         Survey survey = surveyService.getSurvey(campaign.getSurveyId());
