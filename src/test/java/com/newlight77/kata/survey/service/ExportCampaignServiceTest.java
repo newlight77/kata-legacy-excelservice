@@ -43,7 +43,7 @@ public class ExportCampaignServiceTest {
     }
 
     @Test
-    public void test() {
+    public void shouldExportSurveyInAnExcelSheet() {
 
         // Arrange
         Survey survey = JsonUtil.instance().fromJsonFile("/survey.json", Survey.class);
