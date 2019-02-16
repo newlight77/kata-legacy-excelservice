@@ -30,25 +30,18 @@ public class ExportCampaignService {
     Workbook workbook = new XSSFWorkbook();
     CampaignExcelBuilder builder = new CampaignExcelBuilder();
 
-    // step 1 : extract createSheet
-    Sheet sheet = builder.createSheet(workbook);
+    Sheet sheet = builder.buildSheet(workbook);
 
-    // step 2 : extract createHeader
-    builder.createHeader(workbook, sheet);
+    builder.buildHeader(workbook, sheet);
 
-    // step 10 : title style
-    CellStyle titleStyle = builder.createTitleStyle(workbook);
+    CellStyle titleStyle = builder.buildTitleStyle(workbook);
 
-    CellStyle style = workbook.createCellStyle();
-    style.setWrapText(true);
+    CellStyle style = builder.buildCellStyle(workbook);
 
-    // step 3 : extract createClient
-    builder.createClient(survey, sheet, titleStyle, style);
+    builder.buildClient(survey, sheet, titleStyle, style);
 
-    // step 4 : extract createSurvey
-    builder.createSurveys(campaign, sheet, style);
+    builder.buildSurveys(campaign, sheet, style);
 
-    // step 5 : extract write and send
     writeFileAndSend(survey, workbook);
 
   }

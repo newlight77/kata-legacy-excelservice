@@ -9,7 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CampaignExcelBuilder {
 
-    public void createSurveys(Campaign campaign, Sheet sheet, CellStyle style) {
+    public void buildSurveys(Campaign campaign, Sheet sheet, CellStyle style) {
 
         // step 6 : survey number
         writeSurveyNumber(campaign, sheet);
@@ -90,7 +90,7 @@ public class CampaignExcelBuilder {
         cell.setCellValue(campaign.getAddressStatuses().size());
     }
 
-    public void createClient(Survey survey, Sheet sheet, CellStyle titleStyle, CellStyle style) {
+    public void buildClient(Survey survey, Sheet sheet, CellStyle titleStyle, CellStyle style) {
         Row row = sheet.createRow(2);
         Cell cell = row.createCell(0);
         cell.setCellValue("Client");
@@ -116,7 +116,7 @@ public class CampaignExcelBuilder {
         clientAddressCell.setCellStyle(style);
     }
 
-    public void createHeader(Workbook workbook, Sheet sheet) {
+    public void buildHeader(Workbook workbook, Sheet sheet) {
         Row header = sheet.createRow(0);
 
         // step 12 : header style
@@ -142,7 +142,7 @@ public class CampaignExcelBuilder {
         return headerStyle;
     }
 
-    public CellStyle createTitleStyle(Workbook workbook) {
+    public CellStyle buildTitleStyle(Workbook workbook) {
         CellStyle titleStyle = workbook.createCellStyle();
         titleStyle.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
         titleStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
@@ -154,12 +154,18 @@ public class CampaignExcelBuilder {
         return titleStyle;
     }
 
-    public Sheet createSheet(Workbook workbook) {
+    public Sheet buildSheet(Workbook workbook) {
         Sheet sheet = workbook.createSheet("Survey");
         sheet.setColumnWidth(0, 10500);
         for (int i = 1; i <= 18; i++) {
             sheet.setColumnWidth(i, 6000);
         }
         return sheet;
+    }
+
+    public CellStyle buildCellStyle(Workbook workbook) {
+        CellStyle style = workbook.createCellStyle();
+        style.setWrapText(true);
+        return style;
     }
 }
