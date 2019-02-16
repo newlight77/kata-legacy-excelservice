@@ -114,3 +114,34 @@ As an alternative, run with docker-compose:
 ```bash
 docker-compse up -d
 ```
+
+## Refactoring
+
+The ExportCampaignService has been refactored many times. 
+
+Here are the steps :
+
+1. Open-Close Principe : unit test before refactoring
+2. Clean Code : cleaner unit test
+3. Clean Code : smaller methods in ExportCampaignService
+4. Single Responsibility Principle : applied to Campaign and Survey resources
+5. Builder pattern : split ExportCampaignService
+6. Builder pattern : cleaner
+7. Builder pattern to Fluent Builder
+
+
+This may help if you would like to practice and go through all those steps. 
+
+Here is a git history snapshot :
+
+- aa638cb (HEAD -> master, origin/master, __step8-recap__) recap and update readme
+- 100ab7f (__step7-builder-fluent__) refactoring to user builder fluent pattern
+- 0af39e6 (__step6-builder-clean__) cleaner CampaignExcelBuilder : encapsulate everything inside builder class
+- 7638816 (__step5-builder__) renaming builder methods in CampaignExcelBuilder
+- 08587f2 refactoring by splitting ExportCampaignService to use a Builder
+- 8e1fc30 (__step4-srp__) single responsability : splitting campaign and survey services
+- 5758e33 single responsability : splitting campaign and survey services
+- f3f8a8a (__step3-service-refacto__) refactoring export service into small methods
+- 5d92cf4 (__step2-ut-refacto__) refactoring UT, loading json from file
+- 2a02add (__step1-adding-ut__) adding a UT for exportCampaignService assert the excel content
+- 7ee9120 (__before-refacto__) using lombok
