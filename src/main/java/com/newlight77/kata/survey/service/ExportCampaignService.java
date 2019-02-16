@@ -2,10 +2,7 @@ package com.newlight77.kata.survey.service;
 
 import com.newlight77.kata.survey.model.Campaign;
 import com.newlight77.kata.survey.model.Survey;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -27,20 +24,17 @@ public class ExportCampaignService {
 
   public void sendResults(Campaign campaign, Survey survey) {
 
-    Workbook workbook = new XSSFWorkbook();
-    CampaignExcelBuilder builder = new CampaignExcelBuilder();
+    CampaignExcelBuilder builder = new CampaignExcelBuilder(campaign, survey);
 
-    Sheet sheet = builder.buildSheet(workbook);
+    builder.buildSheet("Survey");
+    builder.buildHeaderStyle();
+    builder.buildHeader();
+    builder.buildTitleStyle();
+    builder.buildCellStyle();
+    builder.buildClient();
+    builder.buildSurveys();
 
-    builder.buildHeader(workbook, sheet);
-
-    CellStyle titleStyle = builder.buildTitleStyle(workbook);
-
-    CellStyle style = builder.buildCellStyle(workbook);
-
-    builder.buildClient(survey, sheet, titleStyle, style);
-
-    builder.buildSurveys(campaign, sheet, style);
+    Workbook workbook = builder.build();
 
     writeFileAndSend(survey, workbook);
 
