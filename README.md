@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/newlight77/kata-legacy-excelservice.svg?branch=master)](https://travis-ci.org/newlight77/kata-legacy-excelservice)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0a7b2d54b65bab7fa33a/maintainability)](https://codeclimate.com/github/newlight77/kata-legacy-excelservice/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/0a7b2d54b65bab7fa33a/test_coverage)](https://codeclimate.com/github/newlight77/kata-legacy-excelservice/test_coverage)
+[![codecov](https://codecov.io/gh/newlight77/kata-legacy-excelservice/branch/master/graph/badge.svg)](https://codecov.io/gh/newlight77/kata-legacy-excelservice)
 [![BCH compliance](https://bettercodehub.com/edge/badge/newlight77/kata-legacy-excelservice?branch=master)](https://bettercodehub.com/)
 
 ## Purpose
