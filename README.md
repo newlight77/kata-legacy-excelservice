@@ -11,7 +11,8 @@ The initial codebase shows the technical dept when we neglect to do what should 
 
 ## Data Model
 
-__survey__
+__survey__ :
+
 ```json
 {
     "id" : "surveyId",
@@ -27,15 +28,16 @@ __survey__
     "questions" : [{
         "id" : "questionId1",
         "question" : "question1"
-    }, 
+    },
     {
        "id" : "questionId2",
        "question" : "question2"
-   }] 
+   }]
 }
 ```
 
-__campaign__
+__campaign__:
+
 ```json
 {
     "id" : "campaignId",
@@ -60,13 +62,13 @@ __campaign__
           "city" : "Paris"
         },
         "status" : "TODO"
-    }] 
+    }]
 }
 ```
 
-## Architecture 
+## Architecture
 
-This application is a backend to expose REST API. 
+This application is a backend to expose REST API.
 
 Data are persisted in a [H2 memory database](http://localhost:8080/h2-console).
 
@@ -80,7 +82,7 @@ The endpoints are :
 
 ## Stub
 
-This application consumes curd api for survey and campaign. Here we use [json-server](https://github.com/typicode/json-server#getting-started) to serve it.
+This application consumes crud api for survey and campaign. Here we use [json-server](https://github.com/typicode/json-server#getting-started) to serve it.
 
 The endpoints are :
 
@@ -99,7 +101,7 @@ json-server --watch stub.json
 
 ## Email
 
-We use mailhog to catch every email sent. 
+We use mailhog to catch every email sent.
 
 Run the mailhog server and browse the [ui](http://localhost:8025/#):
 
@@ -121,14 +123,13 @@ The ExportCampaignService has been refactored many times.
 
 Here are the steps :
 
-1. Open-Close Principe : unit test before refactoring
+1. Refactoring : unit test before refactoring
 2. Clean Code : cleaner unit test
 3. Clean Code : smaller methods in ExportCampaignService
 4. Single Responsibility Principle : applied to Campaign and Survey resources
 5. Builder pattern : split ExportCampaignService
 6. Builder pattern : cleaner
 7. Builder pattern to Fluent Builder
-
 
 This may help if you would like to practice and go through all those steps. 
 
